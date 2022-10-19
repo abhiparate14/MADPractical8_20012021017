@@ -20,6 +20,7 @@ class SplashActivity : AppCompatActivity(), Animation.AnimationListener {
         logo_img = findViewById(R.id.img1)
         logo_img.setBackgroundResource(R.drawable.uvpce_logo_list)
         logo_frame_by_frame_animation = logo_img.background as AnimationDrawable
+
         twin_animation = AnimationUtils.loadAnimation(this, R.anim.twin_animation)
         twin_animation.setAnimationListener(this)
     }
@@ -39,10 +40,9 @@ class SplashActivity : AppCompatActivity(), Animation.AnimationListener {
     }
 
     override fun onAnimationEnd(p0: Animation?) {
-        Intent(this, MainActivity::class.java).also {
+        Intent(this, MainActivity::class.java).apply {
             overridePendingTransition(R.anim.scale_in, R.anim.scale_out)
-            startActivity(it)
-            finish()
+            startActivity(this)
         }
     }
 
